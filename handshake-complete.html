@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>handshake-complete</title>
+  <style>
+    body {
+      background-color: #0d1117;
+      color: #c9d1d9;
+      font-family: 'Courier New', Courier, monospace;
+      padding: 2rem;
+      overflow-x: hidden;
+      overflow-y: auto;
+    }
+
+    .terminal {
+      background-color: #161b22;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 0 20px rgba(255, 0, 100, 0.2);
+      z-index: 1;
+      position: relative;
+    }
+
+    .line {
+      margin: 0.5rem 0;
+    }
+
+    .green { color: #1fdd65; }
+    .pink { color: #ff79c6; }
+    .blue { color: #61afef; }
+    .comment { color: #6a737d; font-style: italic; }
+
+    .heart {
+      position: absolute;
+      font-size: 24px;
+      color: #ff6fa3;
+      animation: float 8s infinite ease-in-out;
+      opacity: 0.4;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) scale(1); opacity: 0.4; }
+      50% { transform: translateY(50vh) scale(1.3); opacity: 0.8; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+
+    .feelings-wrapper {
+      margin-top: 2rem;
+    }
+
+    .command {
+      color: #c9d1d9;
+      cursor: pointer;
+      margin: 1rem 0;
+    }
+
+    .output {
+      color: #ffd6e8;
+      border-left: 3px solid #ff79c6;
+      padding-left: 1rem;
+      margin-top: 1rem;
+      white-space: pre-line;
+      display: none;
+      max-width: 700px;
+    }
+  </style>
+</head>
+<body>
+  <h1>💻 Connection Log: Lovdeep x Ravjotdeep</h1>
+
+  <div class="terminal">
+    <div class="line"><span class="comment"># Initial ping received…</span></div>
+    <div class="line"><span class="green">commit</span> 001</div>
+    <div class="line"><span class="blue">Author:</span> Lovdeep</div>
+    <div class="line"><span class="blue">Date:</span> May 27, 2024</div>
+    <div class="line"><span class="pink">Message:</span> “Hi, this is Lovdeep. I’m ready for the answers.”</div>
+
+    <br>
+
+    <div class="line"><span class="green">commit</span> 002</div>
+    <div class="line"><span class="blue">Author:</span> Ravjotdeep</div>
+    <div class="line"><span class="blue">Date:</span> May 27, 2024</div>
+    <div class="line"><span class="pink">Message:</span> “Hey :) And this is Ravjotdeep.”</div>
+
+    <br>
+
+    <div class="line"><span class="green">commit</span> 003</div>
+    <div class="line"><span class="pink">Status:</span> 💘 Mutual curiosity detected. Name story unlocked.</div>
+
+    <br>
+
+    <div class="line"><span class="green">commit</span> 004</div>
+    <div class="line"><span class="pink">Status:</span> Feelings syncing… Connection stabilizing…</div>
+
+    <br>
+    <div class="line"><span class="comment"># System update complete. Hearts connected 💞</span></div>
+
+    <!-- Feelings-loading command section -->
+    <div class="feelings-wrapper">
+      <div class="command" onclick="runFeelings()">> run feelings-loading.sh</div>
+      <div id="feelings" class="output"></div>
+    </div>
+  </div>
+
+  <!-- Floating hearts -->
+  <div class="heart" style="left: 5%;">❤️</div>
+  <div class="heart" style="left: 25%; animation-delay: 2s;">💖</div>
+  <div class="heart" style="left: 50%; animation-delay: 4s;">💕</div>
+  <div class="heart" style="left: 75%; animation-delay: 1s;">💓</div>
+  <div class="heart" style="left: 90%; animation-delay: 3s;">💗</div>
+
+  <script>
+    const feelingsText = `✨ Running feelings-loading.sh...
+💬 Output:
+"One year ago today, you said hey.
+A simple word—but it echoed. It lingered.
+And somehow, that one little message became the start of something so soft, so safe, so real.
+
+Since then, we’ve gone from strangers on a screen to a love story that lives in every scroll, every smile, every moment in between.
+
+A whole year since our first ping—and I still get butterflies every time your name lights up my screen.
+Here’s to that first message… and all the love it unlocked 💌💫"`;
+
+    function runFeelings() {
+      const target = document.getElementById('feelings');
+      target.style.display = 'block';
+      target.innerHTML = '';
+      let i = 0;
+
+      function typeWriter() {
+        if (i < feelingsText.length) {
+          target.innerHTML += feelingsText.charAt(i);
+          i++;
+          setTimeout(typeWriter, 25);
+        }
+      }
+
+      typeWriter();
+    }
+  </script>
+</body>
+</html>
